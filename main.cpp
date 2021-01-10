@@ -1,12 +1,17 @@
 #include <iostream>
 #include <string>
-
 #include "calc.h"
+#include <functional>
+
+double add(double a, double b){
+    return a + b;
+}
 
 using namespace std;
 int main() {
   Calc calc;
-
+  std::function<double(double, double)> add_fn = add;
+  calc.add_function_a2("+",add_fn);
   while (true) {
     std::cout << "> ";
 
@@ -15,7 +20,6 @@ int main() {
 
     if (token.empty()) break;
 
-    
 
     calc.input(token);
 
